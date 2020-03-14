@@ -7,6 +7,8 @@ Vue.use(VueRouter)
 // 路由懒加载
 const Login = () => import("components/Login.vue")
 const Home = () => import("components/Home.vue")
+const Welcome = () => import("components/Welcome.vue")
+const Users = () => import("components/user/Users.vue")
 
 const routes = [
   {
@@ -20,6 +22,17 @@ const routes = [
   {
     path: '/Home',
     component: Home,
+    redirect: '/welcome',
+    children: [
+      {
+        path: '/welcome',
+        component: Welcome
+      },
+      {
+        path: '/users',
+        component: Users
+      }
+    ]
   }
 ]
 
